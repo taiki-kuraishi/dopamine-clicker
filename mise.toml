@@ -1,5 +1,6 @@
-[tools]
-"aqua:godotengine/godot" = "4.7.2-stable"
+[tools."github:godotengine/godot"]
+version = "4.7.2-stable"
+rename_exe = { "Godot_v*" = "godot" }
 
 [tasks."test:core"]
 run = [
