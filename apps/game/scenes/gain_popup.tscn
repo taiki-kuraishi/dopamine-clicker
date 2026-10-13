@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/gain_popup.gd" id="1_script"]
+[ext_resource type="FontVariation" path="res://scenes/bold_font.tres" id="2_font"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_amount"]
+font = ExtResource("2_font")
+font_size = 56
+font_color = Color(0.141176, 0.109804, 0.2, 1)
+shadow_size = 0
+shadow_color = Color(1, 1, 1, 1)
+shadow_offset = Vector2(0, 8)
+
+[node name="GainPopup" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_script")
+
+[node name="AmountLabel" type="Label" parent="."]
+layout_mode = 0
+label_settings = SubResource("LabelSettings_amount")
