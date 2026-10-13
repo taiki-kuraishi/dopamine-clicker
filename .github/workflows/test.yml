@@ -18,3 +18,13 @@ jobs:
         with:
           install_args: github:godotengine/godot
       - run: mise run test:core
+
+  test-game:
+    runs-on: ubuntu-slim
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: jdx/mise-action@v5
+        with:
+          install_args: github:godotengine/godot
+      - run: mise run test:game

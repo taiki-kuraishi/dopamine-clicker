@@ -1,0 +1,220 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/game_screen.gd" id="1_game_screen"]
+[ext_resource type="Script" path="res://scenes/feed.gd" id="2_feed"]
+[ext_resource type="Script" path="res://scenes/feed_card.gd" id="3_feed_card"]
+[ext_resource type="Script" path="res://scenes/balance_badge.gd" id="4_balance_badge"]
+[ext_resource type="Script" path="res://scenes/candy_icon.gd" id="5_candy_icon"]
+[ext_resource type="Script" path="res://scenes/dashed_frame.gd" id="6_dashed_frame"]
+[ext_resource type="FontVariation" path="res://scenes/bold_font.tres" id="7_bold_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_phone_shadow"]
+bg_color = Color(0.141176, 0.109804, 0.2, 0.18)
+corner_radius_top_left = 44
+corner_radius_top_right = 44
+corner_radius_bottom_right = 44
+corner_radius_bottom_left = 44
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_phone"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 44
+corner_radius_top_right = 44
+corner_radius_bottom_right = 44
+corner_radius_bottom_left = 44
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_screen"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_notch"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="LabelSettings" id="LabelSettings_card_number"]
+font = ExtResource("7_bold_font")
+font_size = 120
+font_color = Color(0.141176, 0.109804, 0.2, 1)
+shadow_size = 0
+shadow_color = Color(0.141176, 0.109804, 0.2, 0.16)
+shadow_offset = Vector2(0, 10)
+
+[sub_resource type="LabelSettings" id="LabelSettings_amount"]
+font = ExtResource("7_bold_font")
+font_size = 68
+font_color = Color(0.141176, 0.109804, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_unit"]
+font = ExtResource("7_bold_font")
+font_size = 26
+font_color = Color(0.415686, 0.368627, 0.486275, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hint"]
+font = ExtResource("7_bold_font")
+font_size = 26
+font_color = Color(0.141176, 0.109804, 0.2, 0.58)
+line_spacing = 7.0
+
+[node name="GameScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_game_screen")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0.945098, 0.964706, 1)
+
+[node name="PhoneShadow" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 34.0
+offset_right = 806.0
+offset_bottom = 710.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_phone_shadow")
+
+[node name="Phone" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 22.0
+offset_right = 806.0
+offset_bottom = 698.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_phone")
+
+[node name="Feed" type="Panel" parent="Phone"]
+unique_name_in_owner = true
+clip_children = 1
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 316.0
+offset_bottom = 660.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_screen")
+script = ExtResource("2_feed")
+
+[node name="CardA" type="ColorRect" parent="Phone/Feed"]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 644.0
+mouse_filter = 2
+script = ExtResource("3_feed_card")
+
+[node name="NumberLabel" type="Label" parent="Phone/Feed/CardA"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_card_number")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardB" type="ColorRect" parent="Phone/Feed"]
+layout_mode = 0
+offset_top = 644.0
+offset_right = 300.0
+offset_bottom = 1288.0
+mouse_filter = 2
+script = ExtResource("3_feed_card")
+
+[node name="NumberLabel" type="Label" parent="Phone/Feed/CardB"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_card_number")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Notch" type="Panel" parent="Phone/Feed"]
+layout_mode = 0
+offset_left = 95.0
+offset_right = 205.0
+offset_bottom = 26.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_notch")
+
+[node name="BalanceBadge" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 56.0
+offset_top = 118.0
+mouse_filter = 2
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 14
+script = ExtResource("4_balance_badge")
+shadow_color = Color(0.141176, 0.109804, 0.2, 0.16)
+
+[node name="Content" type="HBoxContainer" parent="BalanceBadge"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 20
+
+[node name="CandyIcon" type="Control" parent="BalanceBadge/Content"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("5_candy_icon")
+
+[node name="AmountLabel" type="Label" parent="BalanceBadge/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_amount")
+vertical_alignment = 1
+
+[node name="UnitLabel" type="Label" parent="BalanceBadge/Content"]
+layout_mode = 2
+text = "ドーパミン"
+label_settings = SubResource("LabelSettings_unit")
+vertical_alignment = 1
+
+[node name="HintLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 590.0
+offset_right = 436.0
+text = "ドラッグ、ホイール、↑↓キー
+1 枚ずつ。前にも戻れます"
+label_settings = SubResource("LabelSettings_hint")
+
+[node name="UpgradeFrame" type="Control" parent="."]
+layout_mode = 0
+offset_left = 856.0
+offset_top = 96.0
+offset_right = 1224.0
+offset_bottom = 624.0
+mouse_filter = 2
+script = ExtResource("6_dashed_frame")
+line_color = Color(0.141176, 0.109804, 0.2, 0.22)
+
+[node name="EffectLayer" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
