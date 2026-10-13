@@ -1,0 +1,9 @@
+[tools."github:godotengine/godot"]
+version = "4.7.2-stable"
+rename_exe = { "Godot_v*" = "godot" }
+
+[tasks."test:core"]
+run = [
+  "godot --headless --path packages/core --import",
+  "godot --headless --path packages/core -s res://addons/gdUnit4/bin/GdUnitCmdTool.gd --ignoreHeadlessMode -a res://test",
+]
