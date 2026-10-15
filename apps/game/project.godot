@@ -3,8 +3,12 @@ config_version=5
 [application]
 
 config/name="dopamine-clicker"
-run/main_scene="res://scenes/game_screen.tscn"
+run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.7")
+
+[autoload]
+
+Game="*res://state/game_state.gd"
 
 [debug]
 
